@@ -1,8 +1,9 @@
 // Service Worker for offline support
-const CACHE_NAME = 'tapneat-v1';
+const CACHE_NAME = 'tapneat-v2';
 const urlsToCache = [
-    '/',
-    '/index.html',
+    './',
+    './index.html',
+    './downloads/latest.json',
 ];
 
 // Install event
@@ -56,7 +57,7 @@ self.addEventListener('fetch', (event) => {
                 return response;
             }).catch(() => {
                 // Return offline page if available
-                return caches.match('/index.html');
+                return caches.match('./index.html');
             });
         })
     );

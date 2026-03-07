@@ -6,8 +6,8 @@ Your custom domain is ready! Here's how to point it to your GitHub Pages landing
 
 ### Step 1: Push Code to GitHub
 ```powershell
-cd "D:\Downloads\Vibrant Community Marketplace App"
-git add docs/
+cd "D:\Downloads\tap-n-eat-web"
+git add .
 git commit -m "Add custom domain configuration"
 git push origin main
 ```
@@ -98,7 +98,7 @@ git push origin main
 
 If you'd rather host directly on Afrihost's servers:
 
-1. **FTP Upload** the `/docs` folder contents to `public_html/`
+1. **FTP Upload** the repository root files (`index.html`, `downloads/`, `sw.js`, etc.) to `public_html/`
 2. **Point DNS** to Afrihost's server (likely already done)
 3. No GitHub involvement needed
 

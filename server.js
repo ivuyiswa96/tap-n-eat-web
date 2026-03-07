@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 // Serve static files from current directory
 app.use(express.static(__dirname));
 
-// Handle service worker
+// Handle service worker with correct headers
 app.get('/sw.js', (req, res) => {
   res.setHeader('Content-Type', 'application/javascript');
   res.sendFile(path.join(__dirname, 'sw.js'));
@@ -36,4 +36,3 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 TapNEat landing page server running on port ${PORT}`);
   console.log(`📱 Accessible at http://0.0.0.0:${PORT}`);
 });
-

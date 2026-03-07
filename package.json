@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js",
-    "apk:publish": "node scripts/publish-apk.mjs"
+    "dev": "node server.js"
   },
   "keywords": [
     "tapneat",

@@ -1,134 +1,71 @@
-# 🍽️ TapNEat Web - Landing Page
+# TapNEat Web - Static Landing Page
 
-Official landing page for TapNEat mobile app with download links for Android and iOS.
+Official static landing page for TapNEat mobile app downloads.
 
-## 🌐 Live Site
+## Live Site
 
-- **Production**: https://tapneat.co.za
-- **Railway**: [Auto-deployed from main branch]
+- Production: [https://tapneat.co.za](https://tapneat.co.za)
 
-## 📱 Features
+## Features
 
-- ✨ Mobile-first responsive design
-- 📦 Android APK download
-- 🍎 iOS download (coming soon)
-- 🔄 Service Worker for offline support
-- 🎨 Beautiful gradient UI
-- ⚡ Fast loading (<100KB total size)
-- 🔍 SEO optimized with sitemap
+- Mobile-first responsive design
+- Android APK download from `downloads/TapNEat.apk`
+- iOS button placeholder (coming soon)
+- Service Worker offline cache support
+- SEO files included (`sitemap.xml`, `CNAME`, `_config.yml`)
 
-## 🛠️ Tech Stack
+## Stack
 
-- **Frontend**: Pure HTML5, CSS3, JavaScript (no external dependencies)
-- **Server**: Node.js + Express (for Railway hosting)
-- **Hosting**: Railway (with custom domain support)
-- **Domain**: tapneat.co.za (managed via Afrihost DNS)
+- HTML5 + CSS3 + vanilla JavaScript
+- No Node.js runtime
+- No backend server
 
-## 📦 Project Structure
+## Project Structure
 
-```
+```text
 tap-n-eat-web/
-├── index.html              # Main landing page
-├── sw.js                   # Service Worker
-├── server.js               # Express server for Railway
-├── package.json            # Node.js dependencies
-├── railway.json            # Railway deployment config
-├── CNAME                   # Custom domain configuration
-├── sitemap.xml             # SEO sitemap
-├── _config.yml             # Jekyll config (GitHub Pages backup)
-├── RAILWAY_DEPLOY.md       # Railway deployment guide
-├── CUSTOM_DOMAIN_SETUP.md  # DNS configuration guide
-└── DEPLOY.md               # GitHub Pages guide
+|-- index.html
+|-- sw.js
+|-- CNAME
+|-- sitemap.xml
+|-- _config.yml
+|-- CUSTOM_DOMAIN_SETUP.md
+|-- DEPLOY.md
+`-- downloads/
+    |-- TapNEat.apk
+    |-- latest.json
+    `-- apk/
+```
 
-## 🚀 Quick Deploy to Railway
+## Local Preview (No Node.js)
+
+Option 1 (recommended): open `index.html` directly in your browser.
+
+Option 2 (better Service Worker behavior): use any simple static file server, for example:
 
 ```bash
-# 1. Push to GitHub
-git add .
-git commit -m "Initial commit"
-git push origin main
-
-# 2. Deploy on Railway
-- Go to https://railway.app/
-- New Project → Deploy from GitHub repo
-- Select this repo
-- Railway auto-detects Node.js and deploys
-- Add custom domain in Settings → Domains
-
-# 3. Configure DNS (see RAILWAY_DEPLOY.md)
+python -m http.server 8080
 ```
 
-Full deployment guide: [RAILWAY_DEPLOY.md](RAILWAY_DEPLOY.md)
+Then visit `http://localhost:8080`.
 
-## 🔧 Local Development
+## Deployment
 
-```bash
-# Install dependencies
-npm install
+Use any static host:
 
-# Start server
-npm start
+- GitHub Pages
+- Netlify
+- Cloudflare Pages
+- Static hosting on your domain provider
 
-# Visit
-http://localhost:3000
-```
+Detailed steps: see `DEPLOY.md` and `CUSTOM_DOMAIN_SETUP.md`.
 
-## 📲 Update Download Links
+## Updating APK
 
-### Android APK
+1. Replace `downloads/TapNEat.apk` with the latest build.
+2. Update `downloads/latest.json` version metadata.
+3. Commit and deploy.
 
-**Option 1**: Host on Railway
-```bash
-# Add /downloads folder with APK
-mkdir downloads
-cp TapNEat.v1.apk downloads/
-```
+## License
 
-Update in `index.html`:
-```html
-<a href="/downloads/TapNEat.v1.apk" download>
-```
-
-**Option 2**: Use GitHub Releases (Recommended)
-1. Create release on this repo
-2. Upload APK file
-3. Copy download URL
-4. Update href in index.html
-
-### iOS IPA
-
-When iOS build is ready:
-- Upload IPA to releases
-- Update iOS button href
-- Remove "Coming Soon" badge
-
-## 📊 Mobile Performance
-
-- **Lighthouse Score**: 95+
-- **Mobile Friendly**: ✅ Yes
-- **Load Time**: < 1 second
-- **Bundle Size**: < 50KB
-
-## 🛠️ Technology Stack
-
-- Pure HTML5 + CSS3 (no frameworks)
-- ES6 JavaScript
-- Service Worker API
-- Responsive design with flexbox/grid
-- CSS animations
-
-## 📱 Tested On
-
-- iPhone SE to iPhone 15 Pro Max
-- Samsung Galaxy S10-S24
-- Chrome, Safari, Firefox mobile
-- Android 8 to 14
-
-## 📝 License
-
-Same as parent project
-
----
-
-**Last Updated**: 2026-03-07  
-**Version**: 1.0
+Same as parent project.

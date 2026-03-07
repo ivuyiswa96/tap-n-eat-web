@@ -1,143 +1,53 @@
-# 🚀 Deploy TapNEat Website on GitHub Pages
+# Deploy TapNEat Static Site
 
-## Quick Setup (5 minutes)
+This repository is static-only. You do not need Node.js or npm to deploy it.
 
-### Step 1: Push to GitHub
+## GitHub Pages
+
+- Push the repository to GitHub.
+
 ```bash
 git add .
-git commit -m "Add TapNEat landing page"
+git commit -m "Deploy static TapNEat site"
 git push origin main
 ```
 
-### Step 2: Enable GitHub Pages
-1. Go to **Settings** → **Pages**
-2. Select **Source**: `Deploy from a branch`
-3. Select **Branch**: `main`
-4. Select **Folder**: `/docs`
-5. Click **Save**
+- In GitHub: `Settings` -> `Pages`.
+- Set `Source` to `Deploy from a branch`.
+- Select branch `main` and folder `/ (root)`.
+- Save.
 
-### Step 3: Get Your URL
-Your site will be live at:
-```
-https://yourusername.github.io/Vibrant-Community-Marketplace-App
-```
+Your site will publish at your GitHub Pages URL, or at your custom domain if configured.
 
----
+## Custom Domain
 
-## 🎨 Customization
+- `CNAME` already contains `tapneat.co.za`.
+- Configure DNS as described in `CUSTOM_DOMAIN_SETUP.md`.
 
-### Update Download Links
+## What Gets Hosted
 
-In `docs/index.html`, find this line (around line 281):
-```html
-<a href="https://github.com/yourusername/TapNEat/releases/download/v1.0/TapNEat.v1.apk" class="btn btn-android">
-```
+- `index.html`
+- `sw.js`
+- `downloads/TapNEat.apk`
+- `downloads/latest.json`
+- `sitemap.xml`
 
-Replace with your actual APK download link. Options:
+## Local Testing
 
-**Option A: GitHub Releases (FREE)**
-```html
-<a href="https://github.com/yourusername/your-repo/releases/download/v1.0/TapNEat.v1.apk">
-```
+Option 1: Open `index.html` directly in your browser.
 
-**Option B: Direct File Link**
-```html
-<a href="https://example.com/path/to/TapNEat.v1.apk">
-```
+Option 2: Run a lightweight static server (optional):
 
-### Update Metadata
-
-Edit `docs/_config.yml`:
-```yml
-title: TapNEat
-description: Your custom description
-url: https://yourusername.github.io/your-repo
-```
-
----
-
-## 📱 Mobile Testing
-
-### Test Locally (Before deploying)
 ```bash
-# Using Python (macOS/Linux)
-cd docs
-python -m http.server 8000
-
-# Using Node.js
-npx http-server docs
+python -m http.server 8080
 ```
 
-Then visit: `http://localhost:8000`
+Then open `http://localhost:8080`.
 
-### Test on Your Phone
-1. Share the localhost URL via QR code (use a QR generator)
-2. Or test directly on GitHub Pages after deployment
+## Release Checklist
 
----
-
-## 🔗 Add iOS Link (When Ready)
-
-Once GitHub Actions builds the iOS IPA:
-
-1. Upload IPA to GitHub Releases
-2. Replace the iOS button link:
-
-```html
-<a href="https://github.com/yourusername/repo/releases/download/v1.0/TapNEat.v1.ipa" class="btn btn-ios">
-```
-
----
-
-## 📊 Analytics (Optional)
-
-Add Google Analytics to track downloads:
-
-```html
-<!-- Add before closing </head> -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'GA_MEASUREMENT_ID');
-</script>
-```
-
-Replace `GA_MEASUREMENT_ID` with your Google Analytics ID.
-
----
-
-## ✅ Deployment Checklist
-
-- [ ] Updated `/docs/index.html` with correct APK link
-- [ ] Updated `/docs/_config.yml` with your repo details
-- [ ] Pushed changes to GitHub
-- [ ] Enabled GitHub Pages in Settings
-- [ ] Site is live at your GitHub Pages URL
-- [ ] Download buttons work on mobile
-- [ ] Tested on at least one phone device
-
----
-
-## 🎯 Next Steps
-
-1. **Add Social Media Sharing**: Add Open Graph meta tags
-2. **Custom Domain**: Configure a custom domain in GitHub Pages settings
-3. **Email Signup**: Add newsletter subscription form
-4. **Analytics**: Track downloads with Google Analytics or Mixpanel
-5. **SEO**: Submit sitemap to Google Search Console
-
----
-
-## 📞 Support
-
-For issues:
-- Check GitHub Pages documentation: https://pages.github.com
-- GitHub Pages troubleshooting: https://docs.github.com/en/pages
-- Test mobile responsiveness: https://responsivedesignchecker.com
-
----
-
-**Deployed Date**: 2026-03-07  
-**Version**: v1.0
+- [ ] Replace `downloads/TapNEat.apk` with the latest APK
+- [ ] Update `downloads/latest.json`
+- [ ] Push to `main`
+- [ ] Confirm Android download works
+- [ ] Confirm HTTPS works on `tapneat.co.za`
