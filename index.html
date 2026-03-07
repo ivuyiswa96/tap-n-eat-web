@@ -379,7 +379,7 @@
       </div>
 
       <div class="downloads">
-        <a href="/downloads/latest.apk" class="btn android" download="TapNEat-latest.apk" onclick="trackDownload('android')">
+        <a href="/downloads/TapNEat.apk" class="btn android" download="TapNEat.apk" onclick="trackDownload('android')">
           <span class="btn-left">
             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M7.2 9.6h9.6c1.4 0 2.4 1.1 2.4 2.4v5.6c0 1.4-1.1 2.4-2.4 2.4h-9.6c-1.4 0-2.4-1.1-2.4-2.4V12c0-1.4 1.1-2.4 2.4-2.4Z" fill="#fff"/>
@@ -389,7 +389,7 @@
             </svg>
             <span class="btn-copy">
               <small>Android</small>
-              <strong>Download Latest APK</strong>
+              <strong>Download for Android</strong>
             </span>
           </span>
         </a>
@@ -408,7 +408,7 @@
           <span class="badge">Soon</span>
         </a>
 
-        <p id="apk-version" class="footer" style="padding-top: 2px;">Checking latest APK version...</p>
+        <p id="apk-version" class="footer" style="padding-top: 2px;">Loading version info...</p>
       </div>
     </section>
 
@@ -434,7 +434,7 @@
       try {
         const res = await fetch('/downloads/latest.json', { cache: 'no-store' });
         if (!res.ok) {
-          label.textContent = 'Latest APK version unavailable right now.';
+          label.textContent = 'Version info unavailable right now.';
           return;
         }
 
@@ -444,9 +444,9 @@
           return;
         }
 
-        label.textContent = `Latest Android build: v${meta.latestVersion}`;
+        label.textContent = `Tap & Eat Android App - Version ${meta.latestVersion}`;
       } catch (_error) {
-        label.textContent = 'Could not load latest APK metadata.';
+        label.textContent = 'Could not load version info.';
       }
     }
 

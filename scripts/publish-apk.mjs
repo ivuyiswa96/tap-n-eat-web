@@ -4,8 +4,8 @@ import path from 'node:path';
 const repoRoot = process.cwd();
 const downloadsDir = path.join(repoRoot, 'downloads');
 const apkDir = path.join(downloadsDir, 'apk');
-const latestApkPath = path.join(downloadsDir, 'latest.apk');
-const latestJsonPath = path.join(downloadsDir, 'latest.json');
+const tapneatApkPath = path.join(downloadsDir, 'TapNEat.apk');
+const metadataJsonPath = path.join(downloadsDir, 'latest.json');
 
 const sourceArg = process.argv[2];
 if (!sourceArg) {
@@ -41,18 +41,18 @@ const versionedName = `TapNEat.v${nextVersion}.apk`;
 const versionedPath = path.join(apkDir, versionedName);
 
 fs.copyFileSync(sourceApkPath, versionedPath);
-fs.copyFileSync(sourceApkPath, latestApkPath);
+fs.copyFileSync(sourceApkPath, tapneatApkPath);
 
 const metadata = {
   latestVersion: nextVersion,
   latestFile: `apk/${versionedName}`,
-  latestDownload: 'latest.apk',
+  currentDownload: 'TapNEat.apk',
   publishedAt: new Date().toISOString(),
 };
 
-fs.writeFileSync(latestJsonPath, `${JSON.stringify(metadata, null, 2)}\n`, 'utf8');
+fs.writeFileSync(metadataJsonPath, `${JSON.stringify(metadata, null, 2)}\n`, 'utf8');
 
 console.log('APK published successfully.');
 console.log(`Version: v${nextVersion}`);
 console.log(`Versioned file: downloads/apk/${versionedName}`);
-console.log('Latest file: downloads/latest.apk');
+console.log('Current download: downloads/TapNEat.apk');
