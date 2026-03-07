@@ -1,0 +1,13 @@
+# GitHub Pages Config
+theme: jekyll-theme-minimal
+
+# Site metadata
+title: TapNEat
+description: Fresh Food Delivery at Your Doorstep
+url: https://tapneat.co.za
+
+# Custom domain
+domain: tapneat.co.za
+
+# GitHub Pages specific
+show_downloads: false
