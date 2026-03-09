@@ -1,6 +1,6 @@
-# TapNEat Web - Static Landing Page
+# TapNEat Web - Static Starter Files
 
-Official static landing page for TapNEat mobile app downloads.
+Official static starter files for the TapNEat mobile app landing page.
 
 ## Live Site
 
@@ -17,7 +17,7 @@ Official static landing page for TapNEat mobile app downloads.
 ## Stack
 
 - HTML5 + CSS3 + vanilla JavaScript
-- No Node.js runtime
+- No npm, no package.json, no Node.js runtime
 - No backend server
 
 ## Project Structure
