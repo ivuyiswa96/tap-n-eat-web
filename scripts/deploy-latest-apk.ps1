@@ -14,6 +14,28 @@ function Require-Path([string]$PathToCheck, [string]$Label) {
     }
 }
 
+function Write-TextFileWithRetry(
+    [string]$Path,
+    [string]$Content,
+    [int]$MaxAttempts = 8
+) {
+    $utf8NoBom = [System.Text.UTF8Encoding]::new($false)
+
+    for ($attempt = 1; $attempt -le $MaxAttempts; $attempt++) {
+        try {
+            [System.IO.File]::WriteAllText($Path, $Content, $utf8NoBom)
+            return
+        }
+        catch {
+            if ($attempt -eq $MaxAttempts) {
+                throw
+            }
+
+            [System.Threading.Thread]::Sleep(250)
+        }
+    }
+}
+
 Require-Path -PathToCheck $RepoDir -Label "Repo directory"
 Require-Path -PathToCheck $SourceDir -Label "Source APK directory"
 
@@ -82,7 +104,7 @@ try {
         publishedAt     = $publishedAt
     }
 
-    ($newLatestMeta | ConvertTo-Json -Depth 5) + "`n" | Set-Content -LiteralPath $latestJsonPath -Encoding UTF8
+    Write-TextFileWithRetry -Path $latestJsonPath -Content (($newLatestMeta | ConvertTo-Json -Depth 5) + "`n")
 
     $indexContent = Get-Content -LiteralPath $indexPath -Raw
     $updatedIndex = [Regex]::Replace(
@@ -96,7 +118,7 @@ try {
         throw "Could not find Android download link pattern in index.html"
     }
 
-    Set-Content -LiteralPath $indexPath -Value $updatedIndex -Encoding UTF8
+    Write-TextFileWithRetry -Path $indexPath -Content $updatedIndex
 
     git add $directApkPath $versionedApkPath $latestJsonPath $indexPath
     if ($LASTEXITCODE -ne 0) {
