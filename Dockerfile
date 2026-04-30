@@ -1,11 +1,10 @@
-FROM nginx:alpine
-
-COPY . /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY entrypoint.sh /entrypoint.sh
-
-RUN chmod +x /entrypoint.sh
-
+FROM node:20-alpine
+WORKDIR /app
+COPY server.js .
+COPY index.html public/index.html
+COPY privacy-policy.html public/privacy-policy.html
+COPY sw.js public/sw.js
+COPY sitemap.xml public/sitemap.xml
+COPY downloads/latest.json public/downloads/latest.json
 EXPOSE 8080
-
-ENTRYPOINT ["/entrypoint.sh"]
+CMD ["node", "server.js"]

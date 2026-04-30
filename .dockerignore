@@ -3,3 +3,6 @@ downloads/apk/
 .git/
 .github/
 scripts/
+nginx.conf
+entrypoint.sh
+start.sh
